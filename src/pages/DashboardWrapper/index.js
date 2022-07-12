@@ -1,6 +1,7 @@
 import { Col, Row } from "antd"
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
 import CanvasAudio from "../GlobalComponent/CanvasAudio"
+import GeneralSpin from "../GlobalComponent/GeneralSpin"
 
 const stylePage = {
     spaceContainer: {
@@ -40,7 +41,13 @@ const clips = [
 ]
 
 const DashboardWrapper = () => {
-    const [dataClips, setDataClips] = useState(clips)
+    const [dataClips, setDataClips] = useState([])
+	const [loading, setLoading] = useState(false)
+    useEffect(() => {
+        setDataClips(clips)
+        setLoading(true)
+    }, [setDataClips])
+
     return(
         <div >
             <Row 
@@ -57,15 +64,19 @@ const DashboardWrapper = () => {
                     xl={14}
                     xxl={12}
                 >
-                    {dataClips.map((clip, index) => {
-                        return (
-                            <CanvasAudio 
-                                name={clip.name}
-                                category={clip.category}
-                                index={index}
-                            />
-                        )
-                    })}
+                    {(loading) ? 
+                        dataClips.map((clip, index) => {
+                            return (
+                                <CanvasAudio 
+                                    name={clip.name}
+                                    category={clip.category}
+                                    index={index}
+                                />
+                            )
+                        })
+                    :
+                        <GeneralSpin />
+                    }
                 </Col>
             </Row>
         </div>
