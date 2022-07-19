@@ -1,2 +1,3 @@
 export const login = '/login'
-export const dashboard = '/quiz'
+export const dashboard = '/'
+export const category = '/category'

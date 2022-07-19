@@ -1,7 +1,6 @@
 import { Layout } from "antd"
 import React from "react"
 import { Outlet } from "react-router-dom"
-import Banner from "../pages/GlobalComponent/Banner"
 
 const stylePage = {
     generalLayout: {
@@ -13,7 +12,6 @@ const DashboardRoutes = () => {
     return(
         <Layout style={stylePage.generalLayout} >
             <Layout >
-                <Banner />
                 <Outlet />
             </Layout>
         </Layout>

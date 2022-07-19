@@ -18,6 +18,7 @@ const AppRouter = () => {
                 <Route exact path={route.login} element={<Login/>} />
                 <Route exact path='/' element={<PrivateRouter component={<DashboardRoutes />} isAuthenticated={userQuizPoling.logged} />} >
                     <Route exact path={route.dashboard} element={<DashboardWrapper />} />
+                    <Route exact path={`${route.category}/:id`} element={<DashboardWrapper />} />
                     <Route path='*' element={<Page404 /> } />
                 </Route>
             </Routes>

@@ -22,7 +22,7 @@ const Banner = () => {
                     gutter={16} 
                     justify='center' 
                     align='middle' 
-                    style={{textAlign: 'center', height: '100%'}}
+                    style={{textAlign: 'center', height: '100%', margin: '0'}}
                 >
                     <Col span={24} >
                         Banner for name

@@ -9,9 +9,10 @@ import { useNavigate } from "react-router-dom"
 const stylePage = {
     spaceContainer: {
         height: '100%',
+        margin: 0,
     },
     image: {
-        width: '100%'
+        width: '70%'
     },
     colForm: {
         textAlign: 'center',
