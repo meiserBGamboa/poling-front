@@ -1,14 +1,14 @@
 import { Col, Row } from 'antd'
 import imageNav from '../../assets/images/about.jpg'
 
-const Banner = () => {
+const Banner = ({imageBack}) => {
     return(
         <div style={{
             height: '320px', 
         }} >
             <div 
                 style={{
-                    backgroundImage: `url(${imageNav})`, 
+                    backgroundImage: `url(${(imageBack) ? imageBack : imageNav})`, 
                     top: 0,
                     left: 0,
                     minHeight: '400',

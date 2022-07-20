@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react"
 import CanvasAudio from "../GlobalComponent/CanvasAudio"
 import GeneralSpin from "../GlobalComponent/GeneralSpin"
 import Banner from '../GlobalComponent/Banner'
+import { useParams } from "react-router-dom"
 
 const stylePage = {
     spaceContainer: {
@@ -17,38 +18,41 @@ const stylePage = {
 const clips = [
     {
         name: 'clip 1 - pruebas de clip',
-        category: 'category 1',
+        category: 1,
         totalComments: 25,
     },
     {
         name: 'clip 4 - pruebas de clip',
-        category: 'category 2',
+        category: 1,
         totalComments: 25,
     },
     {
         name: 'clip 5 - pruebas de clip',
-        category: 'category 1',
+        category: 1,
         totalComments: 25,
     },
     {
         name: 'clip 6 - pruebas de clip',
-        category: 'category 2',
+        category: 2,
         totalComments: 25,
     },
     {
         name: 'clip 7 - pruebas de clip',
-        category: 'category 1',
+        category: 3,
         totalComments: 25,
     },
 ]
 
-const DashboardWrapper = () => {
+const Category = () => {
+	const {id} = useParams()
     const [dataClips, setDataClips] = useState([])
 	const [loading, setLoading] = useState(false)
     useEffect(() => {
-        setDataClips(clips)
+        let dataFilter = clips.filter((item) => item.category === Number(id))
+        console.log('data ', dataFilter, 'id ', id);
+        setDataClips(dataFilter)
         setLoading(true)
-    }, [setDataClips])
+    }, [setDataClips, id])
 
     return(
         <div >
@@ -71,8 +75,8 @@ const DashboardWrapper = () => {
                         dataClips.map((clip, index) => {
                             return (
                                 <CanvasAudio 
+                                    key={`audio-${index}`}
                                     name={clip.name}
-                                    category={clip.category}
                                     index={index}
                                 />
                             )
@@ -86,4 +90,4 @@ const DashboardWrapper = () => {
     )
 }
 
-export default DashboardWrapper;
+export default Category;

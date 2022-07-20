@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react"
 import GeneralSpin from "../GlobalComponent/GeneralSpin"
 import Banner from '../GlobalComponent/Banner'
 import { useNavigate } from "react-router-dom"
+import backCategory from '../../assets/images/categories.webp'
 
 const { Title, Text } = Typography
 
@@ -54,7 +55,7 @@ const DashboardWrapper = () => {
 
     return(
         <div >
-            <Banner />
+            <Banner imageBack={backCategory} />
             <Row 
                 gutter={16} 
                 justify="center" 
@@ -69,12 +70,16 @@ const DashboardWrapper = () => {
                     xl={18}
                     xxl={16}
                 >
-                    <Row gutter={16} >
+                    <Row gutter={24} >
                         {(loading) ? 
                             dataCategory.map((category) => {
                                 return (
-                                    <Col span={12} style={{marginBottom: '40px'}}>
-                                        <Row >
+                                    <Col span={12} style={{
+                                        marginBottom: '40px',
+                                        padding: '15px 30px', 
+                                        background: 'rgba(255,255,255,.15)'
+                                    }}>
+                                        <Row style={{border: '0.5px solid', padding: '20px 30px'}}>
                                             <Col span={24} >
                                                 <Title level={2} >{`${category.index}. ${category.name}`}</Title>
                                             </Col>
@@ -82,7 +87,7 @@ const DashboardWrapper = () => {
                                                 <Text >{`${category.description}`}</Text>
                                             </Col>
                                             <Col span={24} style={{alignItems: 'center', justifyContent: 'center'}} >
-                                                <Button onClick={() => sendCategory(category.index)} >Evaluate</Button>
+                                                <Button type="primary" danger onClick={() => sendCategory(category.index)} >Evaluate</Button>
                                             </Col>
                                         </Row>
                                     </Col>
