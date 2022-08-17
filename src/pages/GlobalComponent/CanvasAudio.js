@@ -27,14 +27,14 @@ const CanvasAudio = ({
                     borderRadius: 20
                 }}
             >
-                <Col xs={24} sm={24} >
+                <Col xs={24} sm={21} >
                     <Title level={3} >{name}</Title>
                 </Col>
-                <Col xs={24} sm={20} >
-                    <PanelAudio />
-                </Col>
-                <Col xs={24} sm={4} >
+                <Col xs={24} sm={3} >
                     <Button type="primary" danger onClick={() => sendEvaluate(index)} >Evaluar</Button>
+                </Col>
+                <Col xs={24} sm={24} >
+                    <PanelAudio name={index} />
                 </Col>
             </Row>
         </div>

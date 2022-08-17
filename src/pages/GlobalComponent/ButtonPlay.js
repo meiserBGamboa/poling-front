@@ -2,7 +2,7 @@ import { Button } from 'antd'
 import {PlayCircleOutlined, PauseCircleOutlined} from '@ant-design/icons'
 import React from 'react'
 
-const styleButton = {
+/*const styleButton = {
     btnContainer: {
         display: 'flex',
         justifyContent: 'center',
@@ -26,7 +26,7 @@ const styleButton = {
         borderRight: '5px solid rgb(255, 255, 255)',
         cursor: 'pointer',
     }
-}
+}*/
 
 const ButtonPlay = ({ play, isPlaying }) => {
     return (
