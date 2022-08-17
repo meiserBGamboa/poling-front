@@ -1,3 +1,4 @@
+import { Col, Row } from 'antd'
 import React from 'react'
 import ButtonPlay from './ButtonPlay'
 
@@ -31,12 +32,23 @@ const ControlPanel = ({ play, isPlaying, duration, currentTime }) => {
     }
     
     return (
-        <div className='control-panel'>
-            <div className='timer'>{secondsToHms(currentTime)}</div>
-            <ButtonPlay play={play} isPlaying={isPlaying} />
-            <div className='timer'>{secondsToHms(duration)}</div>
-        </div>
+      <Row gutter={16} >
+        <Col span={12} >
+          <ButtonPlay play={play} isPlaying={isPlaying} />
+        </Col>
+        <Col span={11}>
+          <p >{`${secondsToHms(currentTime)}/${secondsToHms(duration)}`}</p>
+        </Col>
+      </Row>
     )
 }
 
 export default ControlPanel
+/*
+
+        <div className='control-panel'>
+            <div className='timer'>{secondsToHms(currentTime)}</div>
+            <ButtonPlay play={play} isPlaying={isPlaying} />
+            <div className='timer'>{secondsToHms(duration)}</div>
+        </div> 
+        */

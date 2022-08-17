@@ -1,3 +1,5 @@
+import { Button } from 'antd'
+import {PlayCircleOutlined, PauseCircleOutlined} from '@ant-design/icons'
 import React from 'react'
 
 const styleButton = {
@@ -28,9 +30,13 @@ const styleButton = {
 
 const ButtonPlay = ({ play, isPlaying }) => {
     return (
-        <div style={styleButton.btnContainer}>
-            <div onClick={play} style={isPlaying ? styleButton.btnStop : styleButton.btnPlay}></div>
-        </div>
+        <Button 
+            onClick={play} 
+            icon={(isPlaying) ? <PauseCircleOutlined /> : <PlayCircleOutlined /> } 
+            shape="circle" 
+            danger 
+            type="primary" 
+            size={'large'} />
     )
 }
 

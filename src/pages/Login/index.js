@@ -17,7 +17,7 @@ const stylePage = {
     colForm: {
         textAlign: 'center',
         padding: '20px',
-        background: 'rgba(0,0,0,.4)'
+        background: 'rgba(5,30,40,.7)'
     },
     divForm: {
         textAlign: 'center'

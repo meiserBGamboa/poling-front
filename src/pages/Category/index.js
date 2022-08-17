@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react"
 import CanvasAudio from "../GlobalComponent/CanvasAudio"
 import GeneralSpin from "../GlobalComponent/GeneralSpin"
 import Banner from '../GlobalComponent/Banner'
-import { useParams } from "react-router-dom"
+//import { useParams } from "react-router-dom"
 
 const stylePage = {
     spaceContainer: {
@@ -18,41 +18,39 @@ const stylePage = {
 const clips = [
     {
         name: 'clip 1 - pruebas de clip',
-        category: 1,
+        id: 1,
         totalComments: 25,
     },
     {
         name: 'clip 4 - pruebas de clip',
-        category: 1,
+        id: 2,
         totalComments: 25,
     },
     {
         name: 'clip 5 - pruebas de clip',
-        category: 1,
+        id: 3,
         totalComments: 25,
     },
     {
         name: 'clip 6 - pruebas de clip',
-        category: 2,
+        id: 4,
         totalComments: 25,
     },
     {
         name: 'clip 7 - pruebas de clip',
-        category: 3,
+        id: 5,
         totalComments: 25,
     },
 ]
 
 const Category = () => {
-	const {id} = useParams()
     const [dataClips, setDataClips] = useState([])
 	const [loading, setLoading] = useState(false)
     useEffect(() => {
-        let dataFilter = clips.filter((item) => item.category === Number(id))
-        console.log('data ', dataFilter, 'id ', id);
+        let dataFilter = clips
         setDataClips(dataFilter)
         setLoading(true)
-    }, [setDataClips, id])
+    }, [setDataClips])
 
     return(
         <div >
@@ -77,7 +75,7 @@ const Category = () => {
                                 <CanvasAudio 
                                     key={`audio-${index}`}
                                     name={clip.name}
-                                    index={index}
+                                    index={clip.id}
                                 />
                             )
                         })

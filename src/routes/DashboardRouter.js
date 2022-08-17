@@ -11,7 +11,7 @@ const stylePage = {
 const DashboardRoutes = () => {
     return(
         <Layout style={stylePage.generalLayout} >
-            <Layout >
+            <Layout style={{background: '#08192D'}} >
                 <Outlet />
             </Layout>
         </Layout>

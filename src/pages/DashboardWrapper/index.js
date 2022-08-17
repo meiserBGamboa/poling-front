@@ -1,4 +1,4 @@
-import { Button, Col, Row, Typography } from "antd"
+import { Button, Col, Grid, Row, Typography } from "antd"
 import React, { useEffect, useState } from "react"
 import GeneralSpin from "../GlobalComponent/GeneralSpin"
 import Banner from '../GlobalComponent/Banner'
@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom"
 import backCategory from '../../assets/images/categories.webp'
 
 const { Title, Text } = Typography
+const { useBreakpoint } = Grid
 
 const stylePage = {
     spaceContainer: {
@@ -25,7 +26,7 @@ const categories = [
     {
         index: 2,
         name: 'Speaker similarity',
-        description: 'Evaluate naturalness of synthetic audios (from very artificial to very human)',
+        description: "Evaluate how alike original speaker's voice and synthetic speaker's voice are",
     },
     {
         index: 3,
@@ -43,6 +44,7 @@ const DashboardWrapper = () => {
     const [dataCategory, setDataCategory] = useState([])
 	const [loading, setLoading] = useState(false)
     let navigate = useNavigate()
+	const { sm } = useBreakpoint()
 
     useEffect(() => {
         setDataCategory(categories)
@@ -70,20 +72,24 @@ const DashboardWrapper = () => {
                     xl={18}
                     xxl={16}
                 >
-                    <Row gutter={24} >
+                    <Row >
                         {(loading) ? 
                             dataCategory.map((category) => {
                                 return (
-                                    <Col span={12} style={{
-                                        marginBottom: '40px',
-                                        padding: '15px 30px', 
-                                        background: 'rgba(255,255,255,.15)'
+                                    <Col xs={24} sm={11} style={{
+                                        marginBottom: 40,
+                                        paddingTop: 15, 
+                                        paddingBottom: 15,
+                                        paddingLeft: 25, 
+                                        paddingRight: 25,
+                                        background: 'rgba(255,255,255,.15)',
+                                        marginLeft: sm ? 20 : 0
                                     }}>
                                         <Row style={{border: '0.5px solid', padding: '20px 30px'}}>
                                             <Col span={24} >
                                                 <Title level={2} >{`${category.index}. ${category.name}`}</Title>
                                             </Col>
-                                            <Col span={24} style={{marginBottom: '15px'}}>
+                                            <Col span={24} style={{marginBottom: '15px', minHeight:60}}>
                                                 <Text >{`${category.description}`}</Text>
                                             </Col>
                                             <Col span={24} style={{alignItems: 'center', justifyContent: 'center'}} >

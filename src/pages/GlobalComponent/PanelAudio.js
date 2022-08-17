@@ -1,3 +1,4 @@
+import { Col, Row } from "antd"
 import { useRef, useState } from "react"
 import song from '../../assets/sound/Suncrown - Legend of the Forgotten Centuries.mp3'
 import ControlPanel from "./ControlPanel"
@@ -41,9 +42,7 @@ const PanelAudio = () => {
     }
 
     return (
-        <div className='app-container'>
-            <h1>Audio Player</h1>
-            <Slider percentage={percentage} onChange={onChange} />
+        <Row gutter={10} >
             <audio
                 ref={audioRef}
                 onTimeUpdate={getCurrDuration}
@@ -52,13 +51,18 @@ const PanelAudio = () => {
                 }}
                 src={song}
             ></audio>
-            <ControlPanel
-                play={play}
-                isPlaying={isPlaying}
-                duration={duration}
-                currentTime={currentTime}
-            />
-        </div>
+            <Col span={24} >
+                <Slider percentage={percentage} onChange={onChange} />
+            </Col>
+            <Col span={24} >
+                <ControlPanel
+                    play={play}
+                    isPlaying={isPlaying}
+                    duration={duration}
+                    currentTime={currentTime}
+                />
+            </Col>
+        </Row>
     )
 }
 
