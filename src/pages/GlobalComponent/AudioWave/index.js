@@ -1,6 +1,7 @@
 import { Button, Col } from "antd"
 import React, { useEffect, useRef, useState } from "react";
 import WaveSurfer from 'wavesurfer.js'
+import {BsFillPlayFill, BsFillPauseFill} from 'react-icons/bs'
 
 const AudioWave = ({file, sec}) => {
     const [isPlaying, setIsPlaying] = useState(false)
@@ -49,7 +50,18 @@ const AudioWave = ({file, sec}) => {
                 <div id={`waveform${sec}`} style={{marginTop: 20, marginBottom: 20}} ></div>
             </Col>
             <Col span={2} >
-                <Button shape="circle" size="middle" danger type="primary" onClick={handlePlay} >{isPlaying ? 'pause' : 'play'}</Button>
+                <Button 
+                    shape="circle" 
+                    size="middle" 
+                    danger 
+                    type="primary" 
+                    onClick={handlePlay} 
+                    icon={
+                        isPlaying 
+                        ? <BsFillPauseFill style={{fontSize: 25}} /> 
+                        : <BsFillPlayFill style={{fontSize: 25}} />
+                    } 
+                />
             </Col>
             <Col span={2} >
                 <p >{getFormatDuration()}</p>
